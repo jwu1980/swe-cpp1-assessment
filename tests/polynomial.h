@@ -140,13 +140,13 @@ public:
     return q;
   }
 
-  std::string str() {
-    std::string ret;
-    for (int i = 0; i < this->vals_.size(); ++i) {
-      ret += this->vals_[i].encode(BASE10) + "x^" + std::to_string(i) + " + ";
-    }
-    return ret.substr(0, ret.length() - 3);
-  }
+  // std::string str() {
+    // std::string ret;
+    // for (int i = 0; i < this->vals_.size(); ++i) {
+      // ret += this->vals_[i].encode(BASE10) + "x^" + std::to_string(i) + " + ";
+    // }
+    // return ret.substr(0, ret.length() - 3);
+  // }
 
   friend Polynomial operator/(const Polynomial &p1, const Polynomial &p2) {
     if (p2.is_zero()) {

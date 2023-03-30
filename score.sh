@@ -31,7 +31,7 @@ for d in $TEST_DIRS; do
         filename=$(basename -- "$f")
         filename="${filename%.*}"
         g++ $CPPFLAGS -o $TEST_DST_DIR/$filename.o -I$CODEGEN_DIR -I. $f
-        g++ -g -o $TEST_DST_DIR/$filename $(ls $GTEST_DST_DIR/*.o) $ALL_OBJS $TEST_DST_DIR/$filename.o $LIBS
+        g++ -g -o $TEST_DST_DIR/$filename $(ls $GTEST_DST_DIR/*.o) $ALL_OBJS $TEST_DST_DIR/$filename.o $LIBS -pthread
         ./$TEST_DST_DIR/$filename
         [ $? -ne 0 ] && failed=1
     done

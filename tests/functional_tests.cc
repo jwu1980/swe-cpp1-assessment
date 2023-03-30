@@ -12,13 +12,13 @@ TEST(BigUnsigned, Add) {
   EXPECT_EQ(n + n, two * n);
 }
 
-
+// 1849764852316
 TEST(BigPrimeField, Add) {
   BigUnsigned p("1849764852316");
   BigPrimeField::set_prime(p);
   BigPrimeField n("1267650600228229401496703205376"); // 2^100
   BigPrimeField res("1037610352464");
-
+  
   EXPECT_EQ(n + n, res);
 }
 
@@ -55,14 +55,14 @@ TEST(BigPrimeField, Multiply) {
 
 
 TEST(BigPrimeField, Divide) {
-  BigUnsigned p("1849764852316");
+  BigUnsigned p("184976485289");
   BigPrimeField::set_prime(p);
   BigPrimeField n("1267650600228229401496703205376"); // 2^100
   BigPrimeField d("123456789");
-  BigPrimeField res("1072048663712");
+  BigPrimeField res("157546369834");
 
   BigPrimeField got = n / d;
-
+    got.big_int.show();
   EXPECT_EQ(got, res);
 }
 
@@ -74,7 +74,7 @@ TEST(BigPrimeField, DivideSimple) {
   BigPrimeField res("19");
 
   BigPrimeField got = n / d;
-
+  got.big_int.show();
   EXPECT_EQ(got, res);
 }
 
