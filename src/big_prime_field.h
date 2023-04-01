@@ -13,10 +13,22 @@ public:
         big_int.clear();
     }
     
+    
+    
+    BigPrimeField(int num) {
+        big_int.set_num(num);
+    }
+    
     BigPrimeField(const string& str) {
         for(int i = str.length() - 1; i  >= 0 ; i--){
             big_int.push_back(int(str[i])-int('0'));
         }
+    }
+    
+    // Comparison operators
+    bool operator!=(const int other) const {
+        BigPrimeField pf(other);
+        return big_int != pf.big_int;
     }
     
     // Comparison operators
@@ -28,6 +40,10 @@ public:
         BigPrimeField res;
         res.big_int = (big_int + other.big_int) % prime;
         return res;
+    }
+    
+    BigPrimeField operator+=(const BigPrimeField& other) {
+        return *this + other;
     }
     
     BigPrimeField operator-(const BigPrimeField& other) {
@@ -46,13 +62,21 @@ public:
         return res;
     }
     
-    BigPrimeField operator*(const BigPrimeField& other) {
+    BigPrimeField operator-=(const BigPrimeField& other) {
+        return *this - other;
+    }
+    
+    BigPrimeField operator-() const{
+        return *this;
+    }
+    
+    BigPrimeField operator*(const BigPrimeField& other) const{
         BigPrimeField res;
         res.big_int = (big_int * other.big_int) % prime;
         return res;
     }
     
-    BigUnsigned power(BigUnsigned in, BigUnsigned n) {
+    BigUnsigned power(BigUnsigned in, BigUnsigned n) const{
         BigUnsigned res("1");
         pair<BigUnsigned, BigUnsigned> quot_rem;
         while(n > BigUnsigned("0")) {
@@ -66,13 +90,13 @@ public:
         return res;
     }
     
-    BigPrimeField inverse(const BigPrimeField &in) {
+    BigPrimeField inverse(const BigPrimeField &in) const{
         BigPrimeField res;
         res.big_int = power(in.big_int, prime - BigUnsigned("2"));
         return res;
     }
     
-    BigPrimeField operator/(const BigPrimeField& other) {
+    BigPrimeField operator/(const BigPrimeField& other) const{
         return *this * inverse(other);
     }
     

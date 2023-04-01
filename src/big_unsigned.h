@@ -15,6 +15,10 @@ public:
     }
     
     BigUnsigned(int in) {
+        set_num(in);
+    }
+    
+    void set_num(int in) {
         num.clear();
         while (in > 0) {
             num.push_back(in % 10); // Store the least significant digits in the vector
@@ -169,7 +173,12 @@ public:
         }
         return true;
     }
-        
+    
+    // Comparison operators
+    bool operator!=(const BigUnsigned& other) const {
+        return !(*this == other);
+    }
+    
     bool operator<=(const BigUnsigned& other) const {
         return (*this < other) || (*this == other);
     }

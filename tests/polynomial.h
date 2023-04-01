@@ -104,6 +104,9 @@ public:
     if (is_zero() || p1.is_zero()) {
       this->vals_.clear();
     }
+    if(this->vals_.size() + p1.vals_.size() == 0){
+        return;
+    }
     std::vector<T> new_c(this->vals_.size() + p1.vals_.size() - 1, 0);
 
     for (int i = 0; i < this->vals_.size(); ++i) {

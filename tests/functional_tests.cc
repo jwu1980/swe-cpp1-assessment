@@ -62,7 +62,7 @@ TEST(BigPrimeField, Divide) {
   BigPrimeField res("157546369834");
 
   BigPrimeField got = n / d;
-    got.big_int.show();
+
   EXPECT_EQ(got, res);
 }
 
@@ -74,7 +74,7 @@ TEST(BigPrimeField, DivideSimple) {
   BigPrimeField res("19");
 
   BigPrimeField got = n / d;
-  got.big_int.show();
+
   EXPECT_EQ(got, res);
 }
 

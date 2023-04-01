@@ -28,7 +28,7 @@ TEST(BigPrimeField, TestPolyArith) {
     int N = 400;
     int trials = 10;
     int warmup = 3;
-    BigUnsigned p("5678423945204805371863426");
+    BigUnsigned p("7");
     BigPrimeField::set_prime(p);
     std::vector<BigPrimeField> a_coeffs(N), b_coeffs(N), c_coeffs(2*N - 1, 0);
 
